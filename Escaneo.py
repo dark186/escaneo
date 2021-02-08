@@ -75,11 +75,11 @@ def banner():
 
 
 	time.sleep(0.5)
-	entrada = raw_input("\n\033[32m DarkGhost-$ \033[97m")
+	entrada = input("\n\033[32m DarkGhost-$ \033[97m")
 
 	if entrada == '1':
 		obtener_info_equipo_remoto()
-		ent = raw_input ("\033[31m Menu Principal [S/s]: ")
+		ent = input ("\033[31m Menu Principal [S/s]: ")
 		if ent == 'si' or ent == 's':
 			os.system("clear")
 			banner()
@@ -87,58 +87,59 @@ def banner():
 			os.system("clear")
 			banner()
 	elif entrada == '2':
-		host = raw_input("\033[93m Introduce la direccion a escanear: \033[97m")
-		rango = raw_input("\033[93m Introduce el rango(24): \033[97m")
-		os.system(" nmap -F %s/%s"%(host,rango))
+		host = input("\033[93m Introduce la direccion a escanear: \033[97m")
+		rango = input("\033[93m Introduce el rango(24): \033[97m")
+		ent = print(f" nmap -F {host}/{rango}")
+		os.system(ent)
 		print ("\n\033[31m [!] Tu escaneo se ha completado correctamente\033[97m\n")
 		banner()
 
 	elif entrada == '3':
-		host = raw_input("\033[93m Introduce la direccion a escanear: \033[97m")
-		rango = raw_input("\033[93m Introduce el rango(24): \033[97m")
+		host = input("\033[93m Introduce la direccion a escanear: \033[97m")
+		rango = input("\033[93m Introduce el rango(24): \033[97m")
 		os.system(" nmap -V %s/%s"%(host,rango))
 		print ("\n\033[31m [!] Tu escaneo se ha completado correctamente\033[97m\n")
 		banner()
 
 	elif entrada == '4':
-		host = raw_input("\033[93m Introduce la direccion a escanear: \033[97m")
+		host = input("\033[93m Introduce la direccion a escanear: \033[97m")
 		
 		os.system(" nmap -p- %s"%(host))
 		print ("\n\033[31m [!] Tu escaneo se ha completado correctamente\033[97m\n")
 		banner()		
 	elif entrada == '5':
-		host = raw_input("\033[93m Introduce la direccion a escanear: \033[97m")
+		host = input("\033[93m Introduce la direccion a escanear: \033[97m")
 		
 		os.system(" nmap -sS %s"%(host))
 		print ("\n\033[31m [!] Tu escaneo se ha completado correctamente\033[97m\n")
 		banner()
 	elif entrada == '6':
-		host = raw_input("\033[93m Introduce la direccion a escanear: \033[97m")
+		host = input("\033[93m Introduce la direccion a escanear: \033[97m")
 		
 		os.system(" nmap -A %s"%(host))
 		print ("\n\033[31m [!] Tu escaneo se ha completado correctamente\033[97m\n")
 		banner()
 	elif entrada == '7':
-		host = raw_input("\033[93m Introduce la direccion a escanear: \033[97m")
+		host = input("\033[93m Introduce la direccion a escanear: \033[97m")
 		
 		os.system(" nmap -sV --version-intensity 5 %s"%(host))
 		print ("\n\033[31m [!] Tu escaneo se ha completado correctamente\033[97m\n")
 		banner()
 	elif entrada == '8':
-		host = raw_input("\033[93m Introduce la direccion a escanear: \033[97m")
+		host = input("\033[93m Introduce la direccion a escanear: \033[97m")
 		
 		os.system(" nmap -sV --version-intensity 0 %s"%(host))
 		print ("\n\033[31m [!] Tu escaneo se ha completado correctamente\033[97m\n")
 		banner()
 	elif entrada == '9':
-		host = raw_input("\033[93m Introduce la direccion a escanear: \033[97m")
-		rango = raw_input("\033[93m Introduce el rango(24): \033[97m")
+		host = input("\033[93m Introduce la direccion a escanear: \033[97m")
+		rango = input("\033[93m Introduce el rango(24): \033[97m")
 		os.system(" nmap -sP %s/%s"%(host,rango))
 		print ("\n\033[31m [!] Tu escaneo se ha completado correctamente\033[97m\n")
 		banner()
 	elif entrada == '10':
-		host = raw_input("\033[93m Introduce la direccion a escanear: \033[97m")
-		rango = raw_input("\033[93m Introduce el rango(24): \033[97m")
+		host = input("\033[93m Introduce la direccion a escanear: \033[97m")
+		rango = input("\033[93m Introduce el rango(24): \033[97m")
 		os.system(" nmap -sS -O %s/%s"%(host,rango))
 		print ("\n\033[31m [!] Tu escaneo se ha completado correctamente\033[97m\n")
 		banner()
@@ -147,7 +148,7 @@ def banner():
 		print ("[2]- Actualizar la base de datos de scripts ")
 
 
-		ent = raw_input ("\n\033[32m DarkGhost-$ \033[97m")
+		ent = input ("\n\033[32m DarkGhost-$ \033[97m")
 		if ent == '1':
 			os.system("locate nse | grep script")
 			banner()
@@ -155,7 +156,7 @@ def banner():
 			os.system ("nmap --script-updatedb")
 			banner()
 	elif entrada == '12':
-		ent = raw_input ("Ingrese url desconocida")
+		ent = input ("Ingrese url desconocida")
 
 		os.system("nmap -PN -p 80 %s"%(ent))
 		banner()
@@ -168,22 +169,22 @@ def banner():
 		os.system("clear")
 		banner()
 def formato_direccion_ip():
-	web =  raw_input("Ingresa el url: ")	
+	web =  input("Ingresa el url: ")	
 
 	equipo_remoto_a = socket.gethostbyname(web)
 
 	for dir_ip in [equipo_remoto_a]:
 
-		print ("Direccion Ip: %s ")%(dir_ip)
+		print (f"Direccion Ip: {dir_ip} ")
 
 def obtener_info_equipo_remoto():
-		 url = raw_input ("\n\033[93m Ingrese la url: \033[97m")
+		 url = input ("\n\033[93m Ingrese la url: \033[97m")
 		 equipo_remoto = (url)
 		 try:
-					 print ("\n\033[93m El equipo remoto es: \033[97m%s ") %equipo_remoto
-					 print ("\033[93m La direccion IP es: \033[97m%s ") %socket.gethostbyname(equipo_remoto)
-		 except socket.error, err_msg:
-					 print ("%s: %s" )%(equipo_remoto, err_msg)
+					 print (f"\n\033[93m El equipo remoto es: \033[97m{equipo_remoto} ") 
+					 print (f"\033[93m La direccion IP es: \033[97m{socket.gethostbyname(equipo_remoto)} ")
+		 except socket.error as err_msg:
+					 print (f"{equipo_remoto}: {err_msg}" )
 
 
 nombre_equipo = socket.gethostname()
@@ -193,7 +194,7 @@ nombre_equipo = socket.gethostname()
 os.system("clear")
 print ("""""""\033[93m                           Recolectar informacion""")
 time.sleep(1)
-print ("\n\033[31m Hola \033[97m%s\033[31m recolectamos tu siguiente informacion")%nombre_equipo
+print (f"\n\033[31m Hola \033[97m{nombre_equipo}\033[31m recolectamos tu siguiente informacion")
 time.sleep(0.5)
 print (" Tranquilo esto es seguro, ya que es de codigo abierto.")
 
